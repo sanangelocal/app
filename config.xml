@@ -46,8 +46,10 @@
 
     <!-- Plugins -->
 
-    <!-- Core plugins 
--->
+    <!--
+
+        Core plugins 
+    
     <plugin name="cordova-plugin-battery-status" />
     <plugin name="cordova-plugin-camera" />
     <plugin name="cordova-plugin-media-capture" />
@@ -63,8 +65,9 @@
     <plugin name="cordova-plugin-globalization" />
     <plugin name="cordova-plugin-media" />
     <plugin name="cordova-plugin-network-information" />
-    <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-vibration" />
+    -->
+    <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-inappbrowser" />
 
     <!-- Third party plugins -->
