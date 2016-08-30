@@ -41,6 +41,13 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
+            function onBodyLoad(){     
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+            function onDeviceReady(){
+                window.location.href = <your_remote_url>
+            }
         </script>
     </body>
 </html>
+
