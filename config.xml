@@ -20,8 +20,8 @@
 
         Defines the application's starting page in the top-level web assets directory (www folder).
 
-    -->
     <content    src="http://www.sanangelocal.com/app" />
+    -->
 
     <!--
         Define a specific version of PhoneGap to build into your app.
