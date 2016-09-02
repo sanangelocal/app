@@ -1,44 +1,121 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!--
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>San Angelocal App</title>
+	<link rel="stylesheet" type="text/css" href="css/app.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="screen">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Montserrat' rel='stylesheet' type='text/css'>
 
-            WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323
+	<script type='text/javascript' src='https://code.jquery.com/jquery-latest.min.js?ver=4.5.3'></script>
+<!-- 
+	<link rel='https://api.w.org/' href='http://www.sanangelocal.com/wp-json/' />
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.sanangelocal.com/xmlrpc.php?rsd" />
+	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.sanangelocal.com/wp-includes/wlwmanifest.xml" /> 
+	<link rel="canonical" href="http://www.sanangelocal.com/app/" />
+	<link rel='shortlink' href='http://www.sanangelocal.com/?p=349' />
+	<link rel="alternate" type="application/json+oembed" href="http://www.sanangelocal.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.sanangelocal.com%2Fapp%2F" />
+	<link rel="alternate" type="text/xml+oembed" href="http://www.sanangelocal.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.sanangelocal.com%2Fapp%2F&#038;format=xml" />
+-->
+	<script>
+		$(document).ready(function(){
+			$.get("http://localhost/sanangelocal/app-data/", function(data, status){
+				alert(data);
+			});
+		});
+	</script>
 
-            <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>San Angelocal</title>
-    </head>
-    <body>
-        <iframe src="http://www.sanangelocal.com/app" width="100%" height="100%"></iframe>
-        <script type="text/javascript">
-                // Now safe to use the Codova API
-//                window.open('http://www.sanangelocal.com/app', '_self ', 'location=yes');
-         </script>
-    </body>
+</head>
+
+<body>
+
+<!-- Foster Communications Presents -->
+<div class="intro-graphic">
+	<p class="foster-communications-presents"><strong>Foster Communications Presents:</strong></p>
+	<img class="sanangelocal-logo" src="img/SanAngelocal.png" alt="San Angelocal Logo">
+	<hr>
+	<img src="img/FosterCommunications.jpg" alt="Foster Communications Logo">
+	<p class="special-thanks"><em>Special thanks to our friends at Foster Communications in San Angelo!</em></p>
+</div>
+
+<!-- MMenu .page -->
+<div class="page">
+
+	<div class="dont-peek">Don't peek at me!</div><!-- Don't Peek! -->
+	<p class="Fixed navigation-mmenu-trigger"><a href="#menu" class="mmenu-trigger"><i class="fa fa-bars"></i> View Offers</a></p><!-- MMenu Trigger -->
+
+	<!-- Article -->
+	<article>
+
+
+		<p class="copyright">&#169; <?php echo date("Y") ?> San Angelocal, All Rights Reserved.</p>
+	</article>
+
+</div><!-- End Page Container -->
+
+
+<!-- MMenu Responsive Nav -->
+<nav id="menu">
+	<ul>
+		<li><a class="clear-all" href="#">Home</a></li>
+	</ul>
+</nav>
+
+<script src="js/jquery.mmenu.all.min.js"></script><!-- MMenu Responsive Navigation -->
+<script>
+	$(document).ready(function(){
+		// MMenu
+		$("#menu").mmenu({
+			"extensions": [
+			"pagedim-black"
+			],
+			"counters": true,
+		});
+		//	Home Button / "clear-all"
+		$('.clear-all').click(function(event) {
+			//	Hide All
+			$('article').hide();
+			$('.business-category-title i').hide();
+			$('article .business-category').hide();
+			$('article .business-listing').hide();
+			$('.intro-graphic').show();
+		});
+		//	Using Navigation
+		$('.link').click(function(event) {
+			var activeID = $(this).attr("id");
+			//	Show Article
+			$('article').show();
+			//	Hide All
+			$('.business-category-title i').hide();
+			$('.intro-graphic').hide();
+			$('article .business-category').hide();
+			$('article .business-listing').hide();
+			//	Check If Section Or Business Listing
+			$('article #' + activeID).find(function() {
+				var activeClass = $('article #' + activeID).attr("class");
+				if ( activeClass == 'business-category' ) {
+					$('article #' + activeID).show().children('.business-listing').show();
+				} else {
+					$('article #' + activeID).show().parent('.business-category').show();
+					$('article #' + activeID).parent().find('.business-category-title i').show();
+				}
+			});
+		});
+		//	Clicking On A Business Category Title ".business-category-title"
+		$('.business-category-title').click(function(event) {
+			$(this).children('i').hide();
+			$(this).parent().children('.business-listing').show();
+		});
+		//	Clicking On A Business Listing ".business-listing"
+		$('.business-listing').click(function(event) {
+			$(this).parent().find('.business-category-title i').show();
+			$(this).parent().children('.business-listing').hide();
+			$(this).show();
+		});
+	});
+</script>
+
+<?php wp_footer(); ?>
+</body>
 </html>
-
