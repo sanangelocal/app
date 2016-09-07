@@ -9,141 +9,127 @@
 	<script src="js/jquery-3.1.0.min.js"></script><!-- Include jQuery -->
 	<script src="js/jquery.mmenu.all.min.js"></script><!-- MMenu Responsive Navigation -->
 	<script>
-		$(document).ready(function(){
-			$.getJSON("http://www.sanangelocal.com/app-data/", function(data, status){
-
-				//	Set navList variable
-				var navList = "";
-				var businessCategories = "";
-
-				//	Cycle Through Each Category
-				$.each(data, function (key,value) {
-
-					/*
-
-						Navigation Content
-						
-						Store information as a string listItem
-						Add string to navList
-
-					*/
-					var listItem = '<li><a class="link" href="#" id="' + value.slug + '">' + value.name + '</a></li>';
-					navList += listItem;	//	Add listItem to navList
-
-					/*
-
-						Article Content
-
-					*/
-					//	Business Category Div Open
-					businessCategories += '<div class="business-category" id="' + value.slug + '">';
-					//	Business Category Name
-					businessCategories += '<p class="business-category-title"><i class="fa fa-arrow-left" aria-hidden="true"></i> ' + value.name + '</p>';
-
-					//	Cycle Through Each Key:Value Pair In The Category
-					$.each(value.listings, function (key, value) {
-
-						businessCategories += '<div class="business-listing" id="' + value.business_slug + '">';
-						businessCategories += '<p class="business-listing-name">' + value.business_name + '</p>';
-						businessCategories += value.business_content;
-						businessCategories += '<p class="offer"><strong>' + value.business_offer + '</strong></p></div>';
-
-					});
-
-					//	Business Category Div Close
-					businessCategories += '</div>';
-
+		//	JSON function
+		var JSON = function(data) {
+			//	Set navList variable
+			var navList = "";
+			var businessCategories = "";
+			//	Cycle Through Each Category
+			$.each(data, function (key,value) {
+				//	Navigation Content
+				//	Store information as a string listItem - Add string to navList
+				var listItem = '<li><a class="link" href="#" id="' + value.slug + '">' + value.name + '</a></li>';
+				navList += listItem;	//	Add listItem to navList
+				//	Article Content
+				//	Business Category Div Open
+				businessCategories += '<div class="business-category" id="' + value.slug + '">';
+				//	Business Category Name
+				businessCategories += '<p class="business-category-title"><i class="fa fa-arrow-left" aria-hidden="true"></i> ' + value.name + '</p>';
+				//	Cycle Through Each Key:Value Pair In The Category
+				$.each(value.listings, function (key, value) {
+					businessCategories += '<div class="business-listing" id="' + value.business_slug + '">';
+					businessCategories += '<p class="business-listing-name">' + value.business_name + '</p>';
+					businessCategories += value.business_content;
+					businessCategories += '<p class="offer"><strong>' + value.business_offer + '</strong></p></div>';
 				});
-
-				//	Set HTML
-				document.getElementById("navMenu").innerHTML = navList;
-				document.getElementById("content").innerHTML = businessCategories;
-
-				//	Execute MMenu
-				$("#menu").mmenu({
-					"extensions": [
+				//	Business Category Div Close
+				businessCategories += '</div>';
+			});
+			//	Set HTML
+			document.getElementById("navMenu").innerHTML = navList;
+			document.getElementById("content").innerHTML = businessCategories;
+			//	Normal Site jQuery
+			//	Execute MMenu
+			$("#menu").mmenu({
+				"extensions": [
 					"pagedim-black"
-					],
-					"counters": true,
-				});
-
-				//	Home Button / "clear-all"
-				$('.clear-all').click(function(event) {
-					//	Hide All
-					$('article').hide();
-					$('.business-category-title i').hide();
-					$('article .business-category').hide();
-					$('article .business-listing').hide();
-					$('.intro-graphic').show();
-				});
-				//	Using Navigation
-				$('.link').click(function(event) {
-					var activeID = $(this).attr("id");
-					//	Show Article
-					$('article').show();
-					//	Hide All
-					$('.business-category-title i').hide();
-					$('.intro-graphic').hide();
-					$('article .business-category').hide();
-					$('article .business-listing').hide();
-					//	Check If Section Or Business Listing
-					$('article #' + activeID).find(function() {
-						var activeClass = $('article #' + activeID).attr("class");
-						if ( activeClass == 'business-category' ) {
-							$('article #' + activeID).show().children('.business-listing').show();
-						} else {
-							$('article #' + activeID).show().parent('.business-category').show();
-							$('article #' + activeID).parent().find('.business-category-title i').show();
-						}
-					});
-				});
-				//	Clicking On A Business Category Title ".business-category-title"
-				$('.business-category-title').click(function(event) {
-					$(this).children('i').hide();
-					$(this).parent().children('.business-listing').show();
-				});
-				//	Clicking On A Business Listing ".business-listing"
-				$('.business-listing').click(function(event) {
-					$(this).parent().find('.business-category-title i').show();
-					$(this).parent().children('.business-listing').hide();
-					$(this).show();
+				],
+				"counters": true,
+			});
+			//	Home Button / "clear-all"
+			$('.clear-all').click(function(event) {
+				//	Hide All
+				$('article').hide();
+				$('.business-category-title i').hide();
+				$('article .business-category').hide();
+				$('article .business-listing').hide();
+				$('.intro-graphic').show();
+			});
+			//	Using Navigation
+			$('.link').click(function(event) {
+				var activeID = $(this).attr("id");
+				//	Show Article
+				$('article').show();
+				//	Hide All
+				$('.business-category-title i').hide();
+				$('.intro-graphic').hide();
+				$('article .business-category').hide();
+				$('article .business-listing').hide();
+				//	Check If Section Or Business Listing
+				$('article #' + activeID).find(function() {
+					var activeClass = $('article #' + activeID).attr("class");
+					if ( activeClass == 'business-category' ) {
+						$('article #' + activeID).show().children('.business-listing').show();
+					} else {
+						$('article #' + activeID).show().parent('.business-category').show();
+						$('article #' + activeID).parent().find('.business-category-title i').show();
+					}
 				});
 			});
+			//	Clicking On A Business Category Title ".business-category-title"
+			$('.business-category-title').click(function(event) {
+				$(this).children('i').hide();
+				$(this).parent().children('.business-listing').show();
+			});
+			//	Clicking On A Business Listing ".business-listing"
+			$('.business-listing').click(function(event) {
+				$(this).parent().find('.business-category-title i').show();
+				$(this).parent().children('.business-listing').hide();
+				$(this).show();
+			});
+		}
+		//	Make the AJAX call
+		$.ajax({
+			url: 'http://www.sanangelocal.com/app-data/',
+			dataType: 'jsonp',
+			success: function(dataWeGotViaJsonp){
+				console.log(dataWeGotViaJsonp);
+			}
 		});
 	</script>
 </head>
 
 <body>
+	<!-- Foster Communications Presents -->
+	<div class="intro-graphic">
+		<p class="foster-communications-presents"><strong>Foster Communications Presents:</strong></p>
+		<img class="sanangelocal-logo" src="img/SanAngelocal.png" alt="San Angelocal Logo">
+		<hr>
+		<img src="img/FosterCommunications.jpg" alt="Foster Communications Logo">
+		<p class="special-thanks"><em>Special thanks to our friends at Foster Communications in San Angelo!</em></p>
+	</div>
 
-<!-- Foster Communications Presents -->
-<div class="intro-graphic">
-	<p class="foster-communications-presents"><strong>Foster Communications Presents:</strong></p>
-	<img class="sanangelocal-logo" src="img/SanAngelocal.png" alt="San Angelocal Logo">
-	<hr>
-	<img src="img/FosterCommunications.jpg" alt="Foster Communications Logo">
-	<p class="special-thanks"><em>Special thanks to our friends at Foster Communications in San Angelo!</em></p>
-</div>
+	<!-- MMenu .page -->
+	<div class="page">
 
-<!-- MMenu .page -->
-<div class="page">
+		<!-- Don't Peek! -->
+		<div class="dont-peek">Don't peek at me!</div>
+		
+		<!-- MMenu Trigger -->
+		<p class="Fixed navigation-mmenu-trigger"><a href="#menu" class="mmenu-trigger"><i class="fa fa-bars"></i> View Offers</a></p>
 
-	<div class="dont-peek">Don't peek at me!</div><!-- Don't Peek! -->
-	<p class="Fixed navigation-mmenu-trigger"><a href="#menu" class="mmenu-trigger"><i class="fa fa-bars"></i> View Offers</a></p><!-- MMenu Trigger -->
+		<!-- Article -->
+		<article id="content">
+			<p class="copyright">&#169; <?php echo date("Y") ?> San Angelocal, All Rights Reserved.</p>
+		</article>
 
-	<!-- Article -->
-	<article id="content">
-		<p class="copyright">&#169; <?php echo date("Y") ?> San Angelocal, All Rights Reserved.</p>
-	</article>
+	</div><!-- End Page Container -->
 
-</div><!-- End Page Container -->
-
-<!-- MMenu Responsive Nav -->
-<nav id="menu">
-	<ul id="navMenu">
-		<li><a class="clear-all" href="#">Home</a></li>
-	</ul>
-</nav>
-
-<?php wp_footer(); ?>
+	<!-- MMenu Responsive Nav -->
+	<nav id="menu">
+		<ul id="navMenu">
+			<li><a class="clear-all" href="#">Home</a></li>
+		</ul>
+	</nav>
 </body>
 </html>
