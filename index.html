@@ -9,10 +9,12 @@
 	<script src="js/jquery-3.1.0.min.js"></script><!-- Include jQuery -->
 	<script src="js/jquery.mmenu.all.min.js"></script><!-- MMenu Responsive Navigation -->
 	<script>
-		//	Hide Splash Screen
-		setTimeout(function() {
-			$('.second-splash').fadeOut('fast');
-		}, 4000); // <-- time in milliseconds
+		$(document).ready(function(){
+			//	Hide Splash Screen
+			setTimeout(function() {
+				$('.second-splash').fadeOut('fast');
+			}, 4000); // <-- time in milliseconds
+		});
 		$.support.cors=true;
 		//	JSON function
 		var JSON = function(data) {
