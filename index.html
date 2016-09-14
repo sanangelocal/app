@@ -9,6 +9,10 @@
 	<script src="js/jquery-3.1.0.min.js"></script><!-- Include jQuery -->
 	<script src="js/jquery.mmenu.all.min.js"></script><!-- MMenu Responsive Navigation -->
 	<script>
+		//	Hide Splash Screen
+		setTimeout(function() {
+			$('.second-splash').fadeOut('fast');
+		}, 2000); // <-- time in milliseconds
 		$.support.cors=true;
 		//	JSON function
 		var JSON = function(data) {
@@ -31,6 +35,7 @@
 					businessCategories += '<div class="business-listing" id="' + value.business_slug + '">';
 					businessCategories += '<p class="business-listing-name">' + value.business_name + '</p>';
 					businessCategories += value.business_content;
+					businessCategories += '<p><a href="' + value.business_url + '">Visit Site</a></p>';
 					businessCategories += '<p class="offer"><strong>' + value.business_offer + '</strong></p></div>';
 				});
 				//	Business Category Div Close
@@ -47,6 +52,7 @@
 				],
 				"counters": true,
 			});
+/*
 			//	Home Button / "clear-all"
 			$('.clear-all').click(function(event) {
 				//	Hide All
@@ -88,6 +94,67 @@
 				$(this).parent().children('.business-listing').hide();
 				$(this).show();
 			});
+*/
+			//	Home Button / "clear-all"
+			$('.clear-all').click(function(event) {
+				//	Hide All
+				$('article').hide();
+				$('.business-category-title i').hide();
+				$('article .business-category').hide();
+				$('article .business-listing').hide();
+	//			$('.intro-graphic').show();
+				$('body').removeClass('Toggled');
+				$('body').addClass('unToggled');
+			});
+
+			//	Using Navigation
+			$('.link').click(function(event) {
+				var activeID = $(this).attr("id");
+
+				//	Remove Class
+				$('body').addClass('Toggled');
+
+				//	Show Article
+				$('article').show();
+
+				//	Hide All
+				$('.business-category-title i').hide();
+	//			$('.intro-graphic').hide();
+				$('article .business-category').hide();
+				$('article .business-listing').hide();
+
+				//	Check If Section Or Business Listing
+				$('article #' + activeID).find(function() {
+					var activeClass = $('article #' + activeID).attr("class");
+					if ( activeClass == 'business-category' ) {
+						$('article #' + activeID).show().children('.business-listing').show();
+					} else {
+						$('article #' + activeID).show().parent('.business-category').show();
+						$('article #' + activeID).parent().find('.business-category-title i').show();
+					}
+				});
+			});
+
+			//	Clicking On A Business Category Title ".business-category-title"
+			$('.business-category-title').click(function(event) {
+
+				//	Remove Class
+				$('body').addClass('Toggled');
+
+				$(this).children('i').hide();
+				$(this).parent().children('.business-listing').show();
+			});
+
+			//	Clicking On A Business Listing ".business-listing"
+			$('.business-listing').click(function(event) {
+
+				//	Remove Class
+				$('body').addClass('Toggled');
+
+				$(this).parent().find('.business-category-title i').show();
+				$(this).parent().children('.business-listing').hide();
+				$(this).show();
+			});
 		}
 		//	Make the AJAX call
 		$.ajax({
@@ -101,14 +168,10 @@
 </head>
 
 <body>
-	<!-- Foster Communications Presents -->
-	<div class="intro-graphic">
-		<p class="foster-communications-presents"><strong>Foster Communications Presents:</strong></p>
-		<img class="sanangelocal-logo" src="img/SanAngelocal.png" alt="San Angelocal Logo">
-		<hr>
-		<img src="img/FosterCommunications.jpg" alt="Foster Communications Logo">
-		<p class="special-thanks"><em>Special thanks to our friends at Foster Communications in San Angelo!</em></p>
-	</div>
+
+<!-- Second Splash Screen -->
+<div class="second-splash Fixed">
+</div>
 
 	<!-- MMenu .page -->
 	<div class="page">
