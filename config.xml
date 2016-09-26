@@ -105,30 +105,41 @@
         <icon src="res/icons/ios/Icon-72@2x.png" gap:platform="ios" width="144" height="144" />
     -->
 
-        <icon src="res/icons/ios/iTunesArtwork@1x.png" gap:platform="ios" width="512" height="512" />
-        <icon src="res/icons/ios/iTunesArtwork@2x.png" gap:platform="ios" width="1024" height="1024" />
-        <icon src="res/icons/ios/iTunesArtwork@3x.png" gap:platform="ios" width="1536" height="1536" />
+    <icon src="res/icons/ios/iTunesArtwork@1x.png" gap:platform="ios" width="512" height="512" />
+    <icon src="res/icons/ios/iTunesArtwork@2x.png" gap:platform="ios" width="1024" height="1024" />
+    <icon src="res/icons/ios/iTunesArtwork@3x.png" gap:platform="ios" width="1536" height="1536" />
 
-        <icon src="res/icons/ios/Icon-App-20x20@1x.png" gap:platform="ios" width="20" height="20" />
-        <icon src="res/icons/ios/Icon-App-20x20@2x.png" gap:platform="ios" width="40" height="40" />
-        <icon src="res/icons/ios/Icon-App-20x20@3x.png" gap:platform="ios" width="60" height="60" />
-        <icon src="res/icons/ios/Icon-App-29x29@1x.png" gap:platform="ios" width="29" height="29" />
-        <icon src="res/icons/ios/Icon-App-29x29@2x.png" gap:platform="ios" width="58" height="58" />
-        <icon src="res/icons/ios/Icon-App-29x29@3x.png" gap:platform="ios" width="87" height="87" />
-        <icon src="res/icons/ios/Icon-App-40x40@1x.png" gap:platform="ios" width="40" height="40" />
-        <icon src="res/icons/ios/Icon-App-40x40@2x.png" gap:platform="ios" width="80" height="80" />
-        <icon src="res/icons/ios/Icon-App-40x40@3x.png" gap:platform="ios" width="120" height="120" />
-        <icon src="res/icons/ios/Icon-App-57x57@1x.png" gap:platform="ios" width="57" height="57" />
-        <icon src="res/icons/ios/Icon-App-60x60@1x.png" gap:platform="ios" width="60" height="60" />
-        <icon src="res/icons/ios/Icon-App-60x60@2x.png" gap:platform="ios" width="120" height="120" />
-        <icon src="res/icons/ios/Icon-App-60x60@3x.png" gap:platform="ios" width="180" height="180" />
-        <icon src="res/icons/ios/Icon-App-76x76@1x.png" gap:platform="ios" width="76" height="76" />
-        <icon src="res/icons/ios/Icon-App-76x76@2x.png" gap:platform="ios" width="152" height="152" />
-        <icon src="res/icons/ios/Icon-App-76x76@3x.png" gap:platform="ios" width="228" height="228" />
-        <icon src="res/icons/ios/Icon-App-83.5x83.5@2x.png" gap:platform="ios" width="167" height="167" />
+    <icon src="res/icons/ios/Icon-App-20x20@1x.png" gap:platform="ios" width="20" height="20" />
+    <icon src="res/icons/ios/Icon-App-20x20@2x.png" gap:platform="ios" width="40" height="40" />
+    <icon src="res/icons/ios/Icon-App-20x20@3x.png" gap:platform="ios" width="60" height="60" />
+    <icon src="res/icons/ios/Icon-App-29x29@1x.png" gap:platform="ios" width="29" height="29" />
+    <icon src="res/icons/ios/Icon-App-29x29@2x.png" gap:platform="ios" width="58" height="58" />
+    <icon src="res/icons/ios/Icon-App-29x29@3x.png" gap:platform="ios" width="87" height="87" />
+    <icon src="res/icons/ios/Icon-App-40x40@1x.png" gap:platform="ios" width="40" height="40" />
+    <icon src="res/icons/ios/Icon-App-40x40@2x.png" gap:platform="ios" width="80" height="80" />
+    <icon src="res/icons/ios/Icon-App-40x40@3x.png" gap:platform="ios" width="120" height="120" />
+    <icon src="res/icons/ios/Icon-App-57x57@1x.png" gap:platform="ios" width="57" height="57" />
+    <icon src="res/icons/ios/Icon-App-60x60@1x.png" gap:platform="ios" width="60" height="60" />
+    <icon src="res/icons/ios/Icon-App-60x60@2x.png" gap:platform="ios" width="120" height="120" />
+    <icon src="res/icons/ios/Icon-App-60x60@3x.png" gap:platform="ios" width="180" height="180" />
+    <icon src="res/icons/ios/Icon-App-76x76@1x.png" gap:platform="ios" width="76" height="76" />
+    <icon src="res/icons/ios/Icon-App-76x76@2x.png" gap:platform="ios" width="152" height="152" />
+    <icon src="res/icons/ios/Icon-App-76x76@3x.png" gap:platform="ios" width="228" height="228" />
+    <icon src="res/icons/ios/Icon-App-83.5x83.5@2x.png" gap:platform="ios" width="167" height="167" />
 
     <!-- Define app splash screen for each platform. -->
     <gap:splash src="splash.png" gap:role="default" />
+
+    <!-- iPhone and iPod touch -->
+    <splash src="res/screen/ios/Default.png" platform="ios" width="320" height="480" />
+    <splash src="res/screen/ios/Default@2x.png" platform="ios" width="640" height="960" />
+
+    <!-- iPhone 5 / iPod Touch (5th Generation) -->
+    <splash src="res/screen/ios/Default-568h@2x.png" platform="ios" width="640" height="1136" />
+
+    <!-- iPhone 6 -->
+    <splash src="res/screen/ios/Default-667h@2x.png" platform="ios" width="750" height="1334" />
+    <splash src="res/screen/ios/Default-Portrait-736h@3x.png" platform="ios" width="1242" height="2208" />
 
     <!--
         <gap:splash platform="android" qualifier="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
@@ -142,8 +153,9 @@
         <gap:splash src="res/screen/android/drawable-xdpi/splash.png" gap:platform="android" gap:density="xhdpi" />
     
         <gap:splash src="res/screen/ios/Default.png" gap:platform="ios" width="320" height="480" />
-        <gap:splash src="res/screen/ios/Default@2x.png" gap:platform="ios" width="680" height="960" />
+        <gap:splash src="res/screen/ios/Default@2x.png" gap:platform="ios" width="640" height="960" />
         <gap:splash src="res/screen/ios/Deafult-568h-2x.png" gap:platform="ios" width="640" height="1136" />
+
     -->
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">

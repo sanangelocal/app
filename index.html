@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>San Angelocal App</title>
+	<title>San AngeLocal App</title>
 	<link rel="stylesheet" type="text/css" href="css/app.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="screen">
 	<script src="js/jquery-3.1.0.min.js"></script><!-- Include jQuery -->
@@ -19,8 +19,8 @@
 		//	JSON function
 		var JSON = function(data) {
 			//	Set navList variable
-			var navList = "";
-			var businessCategories = "";
+			var navList = '<li><a class="clear-all" href="#">Home</a></li>';
+			var businessCategories = '';
 			//	Cycle Through Each Category
 			$.each(data, function (key,value) {
 				//	Navigation Content
@@ -54,7 +54,6 @@
 				],
 				"counters": true,
 			});
-/*
 			//	Home Button / "clear-all"
 			$('.clear-all').click(function(event) {
 				//	Hide All
@@ -62,49 +61,6 @@
 				$('.business-category-title i').hide();
 				$('article .business-category').hide();
 				$('article .business-listing').hide();
-				$('.intro-graphic').show();
-			});
-			//	Using Navigation
-			$('.link').click(function(event) {
-				var activeID = $(this).attr("id");
-				//	Show Article
-				$('article').show();
-				//	Hide All
-				$('.business-category-title i').hide();
-				$('.intro-graphic').hide();
-				$('article .business-category').hide();
-				$('article .business-listing').hide();
-				//	Check If Section Or Business Listing
-				$('article #' + activeID).find(function() {
-					var activeClass = $('article #' + activeID).attr("class");
-					if ( activeClass == 'business-category' ) {
-						$('article #' + activeID).show().children('.business-listing').show();
-					} else {
-						$('article #' + activeID).show().parent('.business-category').show();
-						$('article #' + activeID).parent().find('.business-category-title i').show();
-					}
-				});
-			});
-			//	Clicking On A Business Category Title ".business-category-title"
-			$('.business-category-title').click(function(event) {
-				$(this).children('i').hide();
-				$(this).parent().children('.business-listing').show();
-			});
-			//	Clicking On A Business Listing ".business-listing"
-			$('.business-listing').click(function(event) {
-				$(this).parent().find('.business-category-title i').show();
-				$(this).parent().children('.business-listing').hide();
-				$(this).show();
-			});
-*/
-			//	Home Button / "clear-all"
-			$('.clear-all').click(function(event) {
-				//	Hide All
-				$('article').hide();
-				$('.business-category-title i').hide();
-				$('article .business-category').hide();
-				$('article .business-listing').hide();
-	//			$('.intro-graphic').show();
 				$('body').removeClass('Toggled');
 				$('body').addClass('unToggled');
 			});
@@ -121,7 +77,6 @@
 
 				//	Hide All
 				$('.business-category-title i').hide();
-	//			$('.intro-graphic').hide();
 				$('article .business-category').hide();
 				$('article .business-listing').hide();
 
@@ -161,6 +116,7 @@
 		//	Make the AJAX call
 		$.ajax({
 			url: 'http://www.sanangelocal.com/app-data/',
+//			url: 'http://localhost/sanangelocal/app-data/',
 			dataType: 'jsonp',
 			success: function(dataWeGotViaJsonp){
 				console.log(dataWeGotViaJsonp);
@@ -185,8 +141,10 @@
 		<p class="Fixed navigation-mmenu-trigger"><a href="#menu" class="mmenu-trigger"><i class="fa fa-bars"></i> View Offers</a></p>
 
 		<!-- Article -->
-		<article id="content">
-			<p class="copyright">&#169; <?php echo date("Y") ?> San Angelocal, All Rights Reserved.</p>
+		<article>
+			<div id="content">
+			</div>
+			<p class="copyright">Powered by Foster Communications Co Inc. <br>&#169; <?php echo date("Y") ?> San AngeLocal, All Rights Reserved.</p>
 		</article>
 
 	</div><!-- End Page Container -->
@@ -194,7 +152,6 @@
 	<!-- MMenu Responsive Nav -->
 	<nav id="menu">
 		<ul id="navMenu">
-			<li><a class="clear-all" href="#">Home</a></li>
 		</ul>
 	</nav>
 </body>
