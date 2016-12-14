@@ -41,7 +41,7 @@
         <preference name="SplashScreen" value="splash" />
 
     -->
-    <preference name="SplashScreenDelay"          value="5000" />           <!-- all: Set splash screen delay -->
+    <preference name="SplashScreenDelay"          value="2000" />           <!-- all: Set splash screen delay -->
     <preference name="orientation"                value="portrait" />       <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="handset" />        <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->

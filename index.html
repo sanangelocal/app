@@ -9,12 +9,6 @@
 	<script src="js/jquery-3.1.0.min.js"></script><!-- Include jQuery -->
 	<script src="js/jquery.mmenu.all.min.js"></script><!-- MMenu Responsive Navigation -->
 	<script>
-		$(document).ready(function(){
-			//	Hide Splash Screen
-			setTimeout(function() {
-				$('.second-splash').fadeOut('fast');
-			}, 5500); // <-- time in milliseconds
-		});
 		$.support.cors=true;
 		//	JSON function
 		var JSON = function(data) {
@@ -64,6 +58,8 @@
 				$('body').removeClass('Toggled');
 				$('body').addClass('unToggled');
 			});
+			//	Reload App Button
+			document.getElementById('appReloadButton').onclick=function(){location.reload();};
 
 			//	Using Navigation
 			$('.link').click(function(event) {
@@ -127,10 +123,6 @@
 
 <body>
 
-<!-- Second Splash Screen -->
-<div class="second-splash Fixed">
-</div>
-
 	<!-- MMenu .page -->
 	<div class="page">
 
@@ -152,6 +144,7 @@
 	<!-- MMenu Responsive Nav -->
 	<nav id="menu">
 		<ul id="navMenu">
+			<li><a id="appReloadButton" class="app-reload-button" href="#">Reload Offers</a></li>
 		</ul>
 	</nav>
 </body>
