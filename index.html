@@ -31,6 +31,10 @@
 					businessCategories += '<div class="business-listing" id="' + value.business_slug + '">';
 					businessCategories += '<p class="business-listing-name">' + value.business_name + '</p>';
 					businessCategories += value.business_content;
+					if(value.business_phone) {
+						value.business_phone_stripped = value.business_phone.replace(/\D/g,'');
+						businessCategories += '<p><a href="tel:' + value.business_phone_stripped + '">' + value.business_phone + '</a></p>';
+					}
 					businessCategories += '<p><a href="' + value.business_url + '">Visit Site</a></p>';
 					businessCategories += '<p class="offer"><strong>' + value.business_offer + '</strong></p></div>';
 				});
